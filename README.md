@@ -55,3 +55,6 @@ Playing the webcam stream
 ```
  $("#mywebcam").webcam("play");
 ```
+
+
+Not: The current example does not work on localhost. Must be on a server to test
