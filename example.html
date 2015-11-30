@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Cam Example</title>
+		<style>
+			div[webcam] { width: 640px; height; 480px; border: solid 1px #000000; }
+		</style>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="webcam.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$(document).webcam(); // initialize all webcams in the document
+
+				// listen for the buttons with actions
+				$("button[data-action]").on("click", function(event){
+					event.preventDefault();
+					var action = $(this).data("action");
+					var returned = $("#cameraInterface").webcam(action);
+					if(action == "snapshot")
+						$("img#snapshot").attr("src", returned);
+
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div webcam>
+		</div>
+
+		<img id="snapshot" />
+
+		<button data-action="snapshot">SnapShot</button>
+		<button data-action="play">Play</button>
+		<button data-action="pause">Pause</button>
+		<button data-action="destroy">Destroy</button>
+		
+	</body>
+</html>
